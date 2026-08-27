@@ -1,0 +1,20 @@
+[
+  {
+    "chunk_id": "databridge-pro-0",
+    "source_file": "products/databridge-pro.md",
+    "heading": "DataBridge Pro",
+    "text": "# DataBridge Pro\n\n## Connectors Module\n\nDataBridge Pro connects to external data sources via the Connectors module."
+  },
+  {
+    "chunk_id": "databridge-pro-1",
+    "source_file": "products/databridge-pro.md",
+    "heading": "Error: ERR_CONNECTION_TIMEOUT",
+    "text": "## Error: ERR_CONNECTION_TIMEOUT\n\nThis error occurs when a connector cannot reach the external data source within\n30 seconds. Common causes: firewall rules blocking outbound traffic, expired\ncredentials, or source system downtime.\n\n**Resolution steps:**\n1. Verify network connectivity to the source system.\n2. Re-authenticate the connector credentials.\n3. Check source system status page."
+  },
+  {
+    "chunk_id": "databridge-pro-2",
+    "source_file": "products/databridge-pro.md",
+    "heading": "Bulk Operations in Data Ingestion",
+    "text": "## Bulk Operations in Data Ingestion\n\nAs of v3.0, Data Ingestion supports bulk archive of entries via multi-select\nin the UI, available on Professional plan and above. Starter plan is limited\nto single-item operations."
+  }
+]
