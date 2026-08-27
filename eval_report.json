@@ -1,0 +1,77 @@
+{
+  "project": "Zycus AI Assessment",
+  "evaluation_type": "manual functional evaluation",
+  "note": "No evaluation harness was included in the repository. Results below document locally executed functional tests.",
+  "tests": [
+    {
+      "test_id": "T1-01",
+      "task": "Task 1 - Data Loading and Account Matching",
+      "input": "Synthetic accounts.json and tickets.json",
+      "acceptance_criteria": "Load the provided datasets successfully and attempt account matching without crashing.",
+      "observed_result": "Loaded 500 tickets and 50 accounts. 4 of 500 tickets had matching account records.",
+      "result": "PASS"
+    },
+    {
+      "test_id": "T1-02",
+      "task": "Task 1 - Matched Account Enrichment",
+      "input": "Ticket TKT-10047",
+      "acceptance_criteria": "A ticket with a matching account should contain account information.",
+      "observed_result": "TKT-10047 matched ACC-7397 and displayed company and ticket/account metadata.",
+      "result": "PASS"
+    },
+    {
+      "test_id": "T1-03",
+      "task": "Task 1 - Missing Account Handling",
+      "input": "Ticket with an account_id not present in accounts.json",
+      "acceptance_criteria": "Missing account information should not cause the pipeline to fail.",
+      "observed_result": "The pipeline handles unmatched accounts and reports that no matching account record was found.",
+      "result": "PASS"
+    },
+    {
+      "test_id": "T2-01",
+      "task": "Task 2 - TF-IDF Knowledge Base Retrieval",
+      "input": "connection timeout error connecting to data source",
+      "acceptance_criteria": "The relevant connection-timeout knowledge-base article should rank highest.",
+      "observed_result": "ERR_CONNECTION_TIMEOUT ranked first with score 0.575.",
+      "result": "PASS"
+    },
+    {
+      "test_id": "T2-02",
+      "task": "Task 2 - Knowledge Base Chunking",
+      "input": "Product knowledge-base Markdown files",
+      "acceptance_criteria": "Knowledge-base content should be chunked and indexed successfully.",
+      "observed_result": "3 knowledge-base chunks were produced and a TF-IDF index was saved.",
+      "result": "PASS"
+    },
+    {
+      "test_id": "T2-03",
+      "task": "Task 2 - FAISS Index Construction",
+      "input": "Product knowledge-base chunks",
+      "acceptance_criteria": "The embedding-based index should be constructed successfully.",
+      "observed_result": "3 chunks produced and 3 vectors saved to the FAISS index.",
+      "result": "PASS"
+    },
+    {
+      "test_id": "T2-04",
+      "task": "Task 2 - Similar Historical Tickets",
+      "input": "TKT-10002 - Webhook from CloudSync not reaching Snowflake",
+      "acceptance_criteria": "The RAG pipeline should retrieve similar resolved or closed tickets.",
+      "observed_result": "TKT-10069, TKT-10273 and TKT-10023 were retrieved with similarity scores 0.71, 0.69 and 0.59.",
+      "result": "PASS"
+    },
+    {
+      "test_id": "T2-05",
+      "task": "Task 2 - Adversarial Missing Account Context",
+      "input": "TKT-10002 with no matching account record",
+      "acceptance_criteria": "The pipeline should continue and explicitly report unavailable account context.",
+      "observed_result": "The pipeline completed and reported: No matching account record found for this ticket's account_id.",
+      "result": "PASS"
+    }
+  ],
+  "summary": {
+    "tests_executed": 9,
+    "passed": 9,
+    "failed": 0,
+    "pass_rate": 1.0
+  }
+}
